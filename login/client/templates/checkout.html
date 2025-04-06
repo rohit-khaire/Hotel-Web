@@ -1,0 +1,29 @@
+<!-- client/templates/checkout.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Check-Out</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='client.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h2>Check-Out from Room</h2>
+        <form method="POST">
+            <label for="booking_id">Select Your Booking:</label>
+            <select name="booking_id" required>
+                {% for booking in bookings %}
+                <option value="{{ booking['booking_id'] }}">
+                    Room {{ booking['room_id'] }} at {{ booking['hotel_name'] }} - Booked by {{ booking['user_name'] }}
+                </option>
+                {% endfor %}
+            </select>
+            <br><br>
+            <button type="submit">Check Out</button>
+        </form>
+
+        <br>
+        <a href="{{ url_for('client_home') }}">← Back to Home</a>
+    </div>
+</body>
+</html>
