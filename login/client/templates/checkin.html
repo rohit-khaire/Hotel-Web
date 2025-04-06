@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Available Rooms</title>
+</head>
+<body>
+    <h1>Available Rooms</h1>
+    {% for room in rooms %}
+        <div>
+            <img src="{{ room.image_url }}" width="200"><br>
+            <strong>Room No:</strong> {{ room.room_number }}<br>
+            <form method="post" action="/book/{{ room.id }}">
+                Name: <input type="text" name="username" required><br>
+                <button type="submit">Check-In</button>
+            </form>
+        </div>
+    {% endfor %}
+</body>
+</html>

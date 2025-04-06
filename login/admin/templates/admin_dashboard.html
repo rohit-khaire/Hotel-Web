@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Admin Dashboard</title>
+    <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+    <h1>Admin Dashboard</h1>
+    <a href="/admin/add">Add Room</a>
+    <table border="1">
+        <tr><th>Room ID</th><th>Hotel ID</th><th>Room Number</th><th>Image</th><th>Booked</th><th>Action</th></tr>
+        {% for room in rooms %}
+        <tr>
+            <td>{{ room.id }}</td>
+            <td>{{ room.hotel_id }}</td>
+            <td>{{ room.room_number }}</td>
+            <td><img src="{{ room.image_url }}" width="100"></td>
+            <td>{{ room.is_booked }}</td>
+            <td><a href="/admin/delete/{{ room.id }}">Delete</a></td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>
