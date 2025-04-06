@@ -1,0 +1,29 @@
+<!-- admin/templates/delete_room.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Delete Room</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='admin.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h2>Delete a Room</h2>
+        <form method="POST">
+            <label for="room_id">Select Room to Delete:</label>
+            <select name="room_id" required>
+                {% for room in rooms %}
+                <option value="{{ room['room_id'] }}">
+                    Room {{ room['room_id'] }} - {{ room['hotel_name'] }} ({{ 'Booked' if room['is_booked'] else 'Available' }})
+                </option>
+                {% endfor %}
+            </select>
+            <br><br>
+            <button type="submit">Delete Room</button>
+        </form>
+
+        <br>
+        <a href="{{ url_for('admin_home') }}">← Back to Admin Home</a>
+    </div>
+</body>
+</html>
